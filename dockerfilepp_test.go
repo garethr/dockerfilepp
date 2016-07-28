@@ -23,7 +23,7 @@ func TestRenderUsesTemplate(t *testing.T) {
 	}
 }
 
-func TestRendereUsesTemplateValues(t *testing.T) {
+func TestRenderUsesTemplateValues(t *testing.T) {
 	output := render("COPY {{if .Value}}{{.Value}}{{else}}manifests{{end}} /manifests", "something")
 	if string(output) != "COPY something /manifests" {
 		t.Error("render is not substituting values into templates")
