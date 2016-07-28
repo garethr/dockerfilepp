@@ -1,9 +1,7 @@
-//
-// dockerfilepp provides a very simple library for building Dockerfile
+// Package dockerfilepp provides a very simple library for building Dockerfile
 // post-processors. These applications take a Dockerfile on stdin,
 // replace (using Go templates) a set of passed in replacements, and then
 // output the results to stdout.
-//
 package dockerfilepp
 
 import (
@@ -16,7 +14,7 @@ import (
 	"text/template"
 )
 
-// A struct to provide a way of injecting values into Go templates
+// Context is a struct which provides a way of injecting values into Go templates
 type Context struct {
 	Value string
 }
@@ -43,8 +41,8 @@ func render(temp string, args string) string {
 	return buff.String()
 }
 
-// Main entrypoint for building a post processor. Takes a map of replacements
-// and a usage instructions
+// Process is the main entrypoint for building a pre-processor. Takes a map
+// of replacements and a usage instructions
 func Process(replacements map[string]string, docstring string) {
 	stat, _ := os.Stdin.Stat()
 	// We detect whether we have anything on stdin to process
