@@ -13,15 +13,19 @@ and pipe Dockerfiles in on stdin.
 Here is a simple hello world usage of the API:
 
 ```go
+package main
+
 import (
     "github.com/garethr/dockerfilepp"
 )
 
-replacements := map[string]string{
-    "CUSTOM_INSTALL": "RUN apt-get install thing",
-    "CUSTOM_ECHO": "RUN echo hello",
+func main() {
+    replacements := map[string]string{
+        "CUSTOM_INSTALL": "RUN apt-get install thing",
+        "CUSTOM_ECHO": "RUN echo hello",
+    }
+    dockerfilepp.Process(replacements, "include comprehensive help text here")
 }
-dockerfilepp.Process(replacements, "include comprehensive help text here")
 ```
 
 As a example implementation see [dockerfilepp-puppet](https://github.com/garethr/dockerfilepp-puppet)
